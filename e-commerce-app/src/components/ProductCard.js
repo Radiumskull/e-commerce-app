@@ -26,7 +26,7 @@ export const ProductCardL = (props) => {
         </div>
         <div className="card-image">
         <img src={placeholder} alt="product"/>
-        <i className="fa fa-heart" color="white"></i>
+        {/* <i className="fa fa-heart" color="white"></i> */}
         </div>
         <div className="product-details">
             <div>

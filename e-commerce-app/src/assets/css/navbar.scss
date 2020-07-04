@@ -31,7 +31,18 @@ $color-primary: #2874F0;
         font-size: 1.8em;
     }
     .navbar-links{
-        
+        .cart-button{
+            position: relative;
+            .product-count{
+                position: absolute;
+                left: 6px;
+                top: 6px;
+                background-color: red;
+                border-radius: 100px;
+                padding: 0px 6px 0px 6px;
+            }
+        }
+
         span{
             padding: 10px;
         }
@@ -64,14 +75,35 @@ $color-primary: #2874F0;
 }
 
 .nav-sidebar{
-    display: none;
+    // display: none;
     position: fixed;
     top: 0;
     z-index: 1;
     left: 0px;
-    background-color: red;
+    background-color: white;
     width: 300px;
     height: 200vh;
+    padding-top: 50px;
+    .sidebar-exit{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 1.5em;
+    }
+    h3{
+        font-size: 1.2em;
+        margin-top: 40px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    button{
+        text-align: left;
+        display: block;
+        width: 100%;
+        margin: 4px 0px;
+        border-radius: none;
+    }
+
 }
 
 @media only screen and (max-width: 960px) {
