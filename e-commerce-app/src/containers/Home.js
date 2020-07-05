@@ -8,7 +8,6 @@ import { addCart } from '../actions/cartActions';
 import { ProductListView } from '../components/ProductView';
 import { ProductCardL } from '../components/ProductCard';
 
-import { CategoryNav } from '../components/Navbar';
 import FilterColumn from '../components/FilterColumn';
 
 
@@ -21,7 +20,6 @@ const Home = () => {
 
     return(
     <div>
-        <CategoryNav />
         <div className="Home">
             <FilterColumn />
             <div className="home-content">

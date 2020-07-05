@@ -117,18 +117,18 @@ button{
 
 .Footer{
     background-color: rgb(48, 48, 48);
-    height: 500px;
+    height: 400px;
     color: white;
 }
 
 
 @media only screen and (max-width: 1280px) {
-.Home{
-    margin: 0px 10px 0px 10px;
-    .filter-column{
-        display: none;
+    .Home{
+        margin: 0px 10px 0px 10px;
+        .filter-column{
+            display: none;
+        }
     }
-}
 }
 
 
@@ -140,6 +140,7 @@ button{
 
 @import './navbar.scss';
 @import './productcard.scss';
+@import './landingpage.scss';
 @import './productpage.scss';
 
 

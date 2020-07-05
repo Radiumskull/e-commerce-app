@@ -1,0 +1,87 @@
+.list-carousal{
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .product-card{
+        padding: 2px;
+        width: 400px;
+        &:hover{
+            transform: none;
+        }
+    }
+    button{
+        background-color: transparent;
+        padding: 8px;
+        
+        i{
+            font-size: 1.8em;
+            color: transparent;
+
+            &:hover{
+                color: black;
+                transform: scale(1.1);
+            }
+        }
+    }
+    .button-next{
+        position: absolute;
+        right: 0;
+        top: calc(50% - 30px);
+        z-index: 2;
+    }
+    .button-back{
+        position: absolute;
+        left: 0;
+        top: calc(50% - 30px);
+        z-index: 2;
+    }
+}
+
+
+.image-carousal{
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 90%;
+    margin: 0 auto;
+    // background-color: red;
+    display: flex;
+    justify-content: center;
+    img{
+        padding: 2px;
+        width: 90vw;
+        height: 300px;
+        object-fit: fill;
+    }
+    button{
+        background-color: transparent;
+        padding: 8px;
+        
+        i{
+            font-size: 1.8em;
+            color: black;
+
+            &:hover{
+                color: black;
+                transform: scale(1.1);
+            }
+        }
+    }
+    .button-next{
+        position: absolute;
+        right: 0;
+        top: calc(50% - 20px);
+        z-index: 2;
+    }
+    .button-back{
+        position: absolute;
+        left: 0;
+        top: calc(50% - 20px);
+        z-index: 2;
+    }
+}

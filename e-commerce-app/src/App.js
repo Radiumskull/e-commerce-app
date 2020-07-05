@@ -6,9 +6,10 @@ import { Switch, Route } from 'react-router-dom';
 //Components
 import Home from './containers/Home';
 import Cart from './containers/Cart';
-import ProductPage from './containers/ProductPage'
+import LandingPage from './containers/LandingPage';
+import ProductPage from './containers/ProductPage';
 
-import { Navbar } from './components/Navbar';
+import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
           <Switch>
             <Route exact path='/cart' component={Cart} />
             <Route exact path='/product' component={ProductPage}/>
-            <Route exact path='/' component={Home}/>
+            <Route exact path='/search' component={Home}/>
+            <Route exact path='/' component={LandingPage} />
           </Switch>
         <Footer />
 
