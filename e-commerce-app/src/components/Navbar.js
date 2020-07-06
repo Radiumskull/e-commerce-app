@@ -1,17 +1,28 @@
 import React, { useState, useRef } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { authLogout } from '../actions/authActions';
 
 const Navbar = (props) => {
     const inputTarget = useRef();
+    const authUser = useSelector(state => state.auth.user);
+    const dispatch = useDispatch();
     const product_count = useSelector(state => state.cart.product_count);
     const [ sidebar, toggleSidebar ] = useState('none');
     const toogleHandler = () => sidebar === 'none' ? toggleSidebar('block') : toggleSidebar('none');
     const submitHandler = (event) => {
         event.preventDefault();
         const input = inputTarget.current.value;
-        console.log(props.history.push('/search'));
-        
+        console.log(props.history.push('/search/q=?' + input));
+    }
+
+    const loginButtonHandler = () => {
+        if(authUser === null) props.history.push('/login')  
+        else {
+            dispatch(authLogout());
+            props.history.push('/');
+        }
     }
     
     return(
@@ -26,7 +37,7 @@ const Navbar = (props) => {
         </div>
         <Sidebar toogleHandler={toogleHandler} sidebar={sidebar}/>
         <div className="navbar-links">
-            <button>Login</button>
+    <button onClick={loginButtonHandler}>{authUser === null ? 'Login' : 'Log Out'}</button>
             <Link to='/cart'>
                 <span className='cart-button'>
                     <i className="fa fa-shopping-cart" aria-hidden="true">
@@ -47,8 +58,9 @@ const Sidebar = (props) => {
                 <div className="nav-buttons">
                     <div>
                         <Link to='/'><button className='nav-button' onClick={props.toogleHandler}><i className="fa fa-home" aria-hidden="true"></i> Home</button></Link>
-                        <button className='nav-button' onClick={props.toogleHandler}><i className="fa fa-sign-in" aria-hidden="true"></i> Login</button>
                         <Link to='/cart'><button className='nav-button' onClick={props.toogleHandler}><i className="fa fa-shopping-cart" aria-hidden="true"></i> Cart</button></Link>
+                        <Link to='/login'><button className='nav-button' onClick={props.toogleHandler}><i className="fa fa-sign-in" aria-hidden="true"></i> Login</button></Link>
+                        
                     </div>
 
                     <h3>Categories</h3>

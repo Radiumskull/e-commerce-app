@@ -16,6 +16,7 @@ $color-primary: #2874F0;
     } 
 }
 
+
 .heading{
     font-family: 'Open Sans', sans-serif;
     font-weight: 100;
@@ -137,8 +138,9 @@ button{
 
 
 
-
+@import './loading.scss';
 @import './navbar.scss';
+@import './form.scss';
 @import './productcard.scss';
 @import './landingpage.scss';
 @import './productpage.scss';

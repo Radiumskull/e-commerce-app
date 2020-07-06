@@ -1,0 +1,48 @@
+.auth-page{
+    padding: 10% 0px;
+    position: relative;
+}
+
+
+
+
+.form-container{
+    margin: 0px auto;
+    max-width: 500px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgb(221, 221, 221) 2px 2px 6px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .input-group{
+        margin: 10px 0px;
+        width: 100%;
+        input{
+            display: block;
+            width: 90%;
+            margin: 0px auto;
+            height: 40px;
+            border: rgb(192, 192, 192) 1px solid;
+            border-radius: 4px;
+            padding: 0px 10px;
+            &:focus{
+                border: #2874F0 2px solid;
+            }
+        }
+        label{
+            padding-left: 16px;
+            text-align: left;
+        }
+    }
+    button{
+        margin-top: 36px;
+        margin-bottom: 8px;
+        background-color: #2874F0;
+        color: white;
+    }
+
+
+}

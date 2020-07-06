@@ -36,6 +36,7 @@ export const ListCarousal = (props) => {
     const max = slides.length;
     console.log(max , slideCount, max - slideCount);
     useEffect(() => {
+        setCount(parseInt(window.innerWidth / 200) - 1);
         const handleResize = () => {
             setCount(parseInt(window.innerWidth / 200) - 1);
             changeState(0);
