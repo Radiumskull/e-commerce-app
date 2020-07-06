@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import placeholder from '../assets/images/placeholder.png';
+import { Link } from 'react-router-dom';
 
 export const ProductCard = () => {
     return(
@@ -22,6 +23,7 @@ export const ProductCardL = (props) => {
     return(
         <div className="product-card product-card-large" onClick={() => overlayHandler('flex')} onMouseLeave={() => overlayHandler('none')}>
         <div className="overlay" style={{display : overlay}}>
+            <Link to={'/product/' + product.product_id}><button>View</button></ Link>
             <button onClick={() => props.addCart(product)}>Add Cart</button>
         </div>
         <div className="card-image">

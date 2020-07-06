@@ -10,15 +10,15 @@ const addToCart = (state, action) => {
     newState.products.forEach((product) => {
         if(product.product_id === action.product.product_id){
             flag = false;
-            product.quantity += 1;
-            newState.product_count += 1;
-            newState.total += product.price
+            product.quantity += action.product.quantity;
+            newState.product_count += action.product.quantity;
+            newState.total += (product.price * action.product.quantity)
         }
     });
     if(flag) {
-        newState.products = [...newState.products, {...action.product, quantity : 1}];
-        newState.product_count += 1;
-        newState.total += action.product.price;
+        newState.products = [...newState.products, action.product];
+        newState.product_count += action.product.quantity;
+        newState.total += action.product.price * action.product.quantity;
     };
 
     return newState;

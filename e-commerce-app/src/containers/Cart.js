@@ -5,7 +5,7 @@ import { addQuantity, removeProduct } from '../actions/cartActions';
 
 import { ProductCardE } from '../components/ProductCard';
 
-const Cart = () => {
+const Cart = (props) => {
     const dispatch = useDispatch();
     const cart_products = useSelector(state => state.cart.products, shallowEqual);
     const product_count = useSelector(state => state.cart.product_count, shallowEqual);

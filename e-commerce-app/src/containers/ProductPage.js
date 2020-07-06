@@ -1,22 +1,51 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import placeholder from '../assets/images/placeholder.png';
 
 import { Rating } from '../components/ProductCard';
+import { addCart } from '../actions/cartActions';
 
-const ProductPage = () => {
+const ProductPage = (props) => {
+    const product_id = props.match.params.id;
+    const dispatch = useDispatch();
+    const [product, setProduct ] = useState({});
+    const [quantity, setQuantity] = useState(1);
+    const products = useSelector(state => state.products.products);
+    useEffect(() => {
+        products.forEach((product) => {
+            if(product.product_id === product_id){
+                setProduct(product);
+            }
+        });
+    }, [product_id, products]);
+    const addCartHandler = () => {
+        dispatch(addCart(product, quantity));
+    }
     return (<div className="product-page">
+        <button onClick={() => props.history.goBack()}>Back</button>
         <div className="product-main">
             <img className="product-image" src={placeholder} width="300px" alt='product'/>
             <div className="product-description">
-                <h2>An Awesome Product Name</h2>
+                <h2>{product.product_name}</h2>
                 <span>
                     <h4>Description</h4>
                     <p>Fantafico lprem ipsum is lsdpsaldpdasmfam kafenklasmdkasm knaskdmask ma apkfma;kdm Fantafico lprem ipsum is lsdpsaldpdasmfam kafenklasmdkasm knaskdmask ma apkfma;kdm Fantafico lprem ipsum is lsdpsaldpdasmfam kafenklasmdkasm knaskdmask ma apkfma;kdm Fantafico lprem ipsum is lsdpsaldpdasmfam kafenklasmdkasm knaskdmask ma apkfma;kdm</p>
                 </span>
-                <Rating rating="2.5"/>
+                <Rating rating={product.rating}/>
                 <span className="button-span">
-                    <button style={{backgroundColor : "blue", color : "white"}}>Add Cart</button>
-                    <button style={{backgroundColor : "blue", color : "white"}}>Buy Now</button>
+                    {/* <button style={{backgroundColor : "blue", color : "white"}}>Buy Now</button> */}
+                    <select style={{width : '100px'}} value={quantity} onChange={(event) => setQuantity(parseInt(event.currentTarget.value))}>
+                        <option value={1}>1</option>
+                        <option value={2}>2</option>
+                        <option value={3}>3</option>
+                        <option value={4}>4</option>
+                        <option value={5}>5</option>
+                        <option value={6}>6</option>
+                        <option value={7}>7</option>
+                        <option value={8}>8</option>
+                    </select>
+                    <button style={{backgroundColor : "blue", color : "white"}} onClick={addCartHandler}>Add Cart</button>
+
                 </span>
             </div>
         </div>

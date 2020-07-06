@@ -1,9 +1,9 @@
 
-export const addCart = (product) => {
+export const addCart = (product, quantity) => {
     return {
         type : 'ADD_TO_CART',
-        product : {...product, quantity : 1},
-        price : product.price
+        product : {...product, quantity : quantity === undefined ? 1 : quantity},
+        price : product.price * quantity
     }
 }
 
