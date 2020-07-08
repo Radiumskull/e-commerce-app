@@ -12,11 +12,9 @@ const Register = (props) => {
     const dispatch = useDispatch();
     const authLoading = useSelector(state => state.auth.loading);
     const authError = useSelector(state => state.auth.error);
-    const redirect = (url) => props.history.push(url);
 
     const submitHandler = (event) => {
         event.preventDefault();
-        console.log(name, email, password);
         dispatch(auth(true, {name : name, email : email, password : password}));
     }
 

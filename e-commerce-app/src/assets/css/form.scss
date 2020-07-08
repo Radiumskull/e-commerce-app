@@ -7,7 +7,7 @@
 
 
 .form-container{
-    margin: 0px auto;
+    margin: 20px auto;
     max-width: 500px;
     padding: 20px;
     background-color: white;
@@ -20,7 +20,7 @@
     .input-group{
         margin: 10px 0px;
         width: 100%;
-        input{
+        input, textarea{
             display: block;
             width: 90%;
             margin: 0px auto;
@@ -32,9 +32,21 @@
                 border: #2874F0 2px solid;
             }
         }
+        textarea{
+            height: auto;
+            max-width: 90%;
+            min-width: 90%;
+            min-height: 200px;
+            max-height: 400px;
+            padding: 8px 10px;
+        }
+
         label{
-            padding-left: 16px;
+            padding-left: 3.5%;
             text-align: left;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 4px;
         }
     }
     button{
@@ -43,6 +55,12 @@
         background-color: #2874F0;
         color: white;
     }
-
+    .image-preview{
+        display: block;
+        object-fit: contain;
+        width: 90%;
+        margin: 10px auto;
+    }
 
 }
+

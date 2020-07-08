@@ -32,7 +32,6 @@ export const authLogout = () => {
 
 export const auth = (isSignUp, data) => {
     const baseUrl = `http://127.0.0.1:5000/api/users/${isSignUp ? 'register' : 'signin'}`;
-    console.log(baseUrl);
     return dispatch => {
         dispatch(authStart());
         return isSignUp ? 
@@ -44,15 +43,16 @@ export const auth = (isSignUp, data) => {
             console.log(res.data);
             dispatch(authSuccess(res.data));
         }).catch(e => {
-            console.log(e);
-            // dispatch(authFailure(e.response.data.msg));
+            console.log(e.response.data);
+            dispatch(authFailure(e.response.data.errors[0].msg));
         }) : axios.post(baseUrl, {
             email : data.email,
             password : data.password
         }).then(res => {
             dispatch(authSuccess(res.data))
         }).catch(e => {
-            dispatch(authFailure(e.response.data.msg));
+            console.log(e.response);
+            dispatch(authFailure(e));
         });
 
 

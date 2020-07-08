@@ -10,10 +10,8 @@ const Login = (props) => {
     const dispatch = useDispatch();
     const [email, setEmail ] = useState("");
     const [password, setPassword ] = useState("");
-    const redirect = (url) => props.history.push(url); 
     const submitHandler = (event) => {
         event.preventDefault();
-        console.log(email, password);
         dispatch(auth(false, {email : email, password : password}));
     }
     return(<div className="form">
@@ -39,7 +37,6 @@ const Login = (props) => {
 
 
           <div>New to FlipMarket?<span onClick={() => props.viewHandler('register')} style={{color : 'blue', cursor : 'pointer'}}> Register</span></div>
-
       </div>
     </form>
   </div>);
