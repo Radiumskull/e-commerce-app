@@ -23,20 +23,20 @@ export const ProductCardL = (props) => {
     return(
         <div className="product-card product-card-large" onClick={() => overlayHandler('flex')} onMouseLeave={() => overlayHandler('none')}>
         <div className="overlay" style={{display : overlay}}>
-            <Link to={'/product/' + product.product_id}><button>View</button></ Link>
+            <Link to={'/product/' + product._id}><button>View</button></ Link>
             <button onClick={() => props.addCart(product)}>Add Cart</button>
         </div>
         <div className="card-image">
-        <img src={placeholder} alt="product"/>
+        <img src={'data:image/jpg;base64, ' + product.image} alt="product" height="200" width="50" style={{objectFit : 'contain'}}/>
         {/* <i className="fa fa-heart" color="white"></i> */}
         </div>
         <div className="product-details">
             <div>
-    <h4 className="product-name">{product.product_name}</h4>
-                <sub>This is a awesome product</sub>
+    <h4 className="product-name">{product.name}</h4>
+    <h5>{product.description.substring(0, 200)}</h5>
             </div>
-            <Rating rating={product.rating}/>
-    <strong>$ {product.price}</strong> <del>$ {product.price + 2}</del>
+            <Rating rating={parseFloat(product.rating)}/>
+            <strong>Rs {product.price}</strong>
         </div>
     </div>);
 }

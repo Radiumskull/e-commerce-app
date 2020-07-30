@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import queryString from 'query-string';
 import { Link, withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -14,7 +15,13 @@ const Navbar = (props) => {
     const submitHandler = (event) => {
         event.preventDefault();
         const input = inputTarget.current.value;
-        console.log(props.history.push('/search/q=?' + input));
+        const query = queryString.parse(props.location.search)
+        if(query.category !== undefined){
+            props.history.push(`/search/?category=${query.category}&search=${input}`);
+        } else {
+            props.history.push('/search/?search=' + input);
+        }
+        
     }
 
     const loginButtonHandler = () => {
@@ -29,13 +36,13 @@ const Navbar = (props) => {
     <div className="navbar">
         <i className="fa fa-bars nav-toggle" aria-hidden="true" onClick={toogleHandler}></i>
         <div className="navbar-brand">
-        <Link to='/'><h1 className="heading">FlipMarket</h1></Link>
+        <h1 className="heading"><Link to='/'>FlipMarket</Link></h1>
             <form className='search-bar' onSubmit={submitHandler}>
                 <input type="text" placeholder="Search.." ref={inputTarget}/>
                 <button type="submit"><i className="fa fa-search"></i></button>
             </form>
         </div>
-        <Sidebar toogleHandler={toogleHandler} sidebar={sidebar}/>
+        <Sidebar toogleHandler={toogleHandler} sidebar={sidebar} history={props.history} location={props.location}/>
         <div className="navbar-links">
     <button onClick={loginButtonHandler}>{authUser === null ? 'Login' : 'Log Out'}</button>
             <Link to='/cart'>
@@ -52,6 +59,10 @@ const Navbar = (props) => {
 
 
 const Sidebar = (props) => {
+    const categoryChangeHandler = (category) => {
+        props.history.push('/search/?category=' + category);
+        props.toogleHandler();
+    }
     return(<div className="nav-sidebar" style={{display : props.sidebar}}>
                 <i className="fa fa-times sidebar-exit" aria-hidden="true" onClick={props.toogleHandler}></i>
                 <h2 style={{textAlign : 'center'}}>FlipMarket</h2>
@@ -64,8 +75,9 @@ const Sidebar = (props) => {
                     </div>
 
                     <h3>Categories</h3>
-                    <button className='nav-category'>Shirts</button>
-                    <button className='nav-category'>Trousers</button>
+                    <button className='nav-category' onClick={() => categoryChangeHandler('televisions')}>Televisions</button>
+                    <button className='nav-category' onClick={() => categoryChangeHandler('mobiles')}>Mobiles</button>
+                    <button className='nav-category' onClick={() => categoryChangeHandler('air conditioner')}>Air Conditioner</button>
                 </div>
             </div>);
 }

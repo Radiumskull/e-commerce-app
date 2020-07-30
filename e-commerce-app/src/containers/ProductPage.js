@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import placeholder from '../assets/images/placeholder.png';
 
 import { Rating } from '../components/ProductCard';
 import { addCart } from '../actions/cartActions';
+import placeholder from '../assets/images/placeholder.png'
 
 const ProductPage = (props) => {
     const product_id = props.match.params.id;
@@ -13,7 +13,7 @@ const ProductPage = (props) => {
     const products = useSelector(state => state.products.products);
     useEffect(() => {
         products.forEach((product) => {
-            if(product.product_id === product_id){
+            if(product._id === product_id){
                 setProduct(product);
             }
         });
@@ -24,12 +24,12 @@ const ProductPage = (props) => {
     return (<div className="product-page">
         <button onClick={() => props.history.goBack()}>Back</button>
         <div className="product-main">
-            <img className="product-image" src={placeholder} width="300px" alt='product'/>
+        <img className="product-image" src={product.image === undefined ? placeholder : 'data:image/png;base64,' + product.image} alt={product.name} height="200" width="50" style={{objectFit : 'contain'}}/>
             <div className="product-description">
-                <h2>{product.product_name}</h2>
+                <h2>{product.name}</h2>
                 <span>
                     <h4>Description</h4>
-                    <p>Fantafico lprem ipsum is lsdpsaldpdasmfam kafenklasmdkasm knaskdmask ma apkfma;kdm Fantafico lprem ipsum is lsdpsaldpdasmfam kafenklasmdkasm knaskdmask ma apkfma;kdm Fantafico lprem ipsum is lsdpsaldpdasmfam kafenklasmdkasm knaskdmask ma apkfma;kdm Fantafico lprem ipsum is lsdpsaldpdasmfam kafenklasmdkasm knaskdmask ma apkfma;kdm</p>
+                    <p>{product.description}</p>
                 </span>
                 <Rating rating={product.rating}/>
                 <span className="button-span">

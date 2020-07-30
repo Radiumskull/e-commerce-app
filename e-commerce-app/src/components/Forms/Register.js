@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { auth } from '../../actions/authActions';
 
 const Register = (props) => {
-    const [name, setName ] = useState('');
     const [email, setEmail ] = useState("");
     const [password, setPassword ] = useState("");
     
@@ -15,7 +14,7 @@ const Register = (props) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        dispatch(auth(true, {name : name, email : email, password : password}));
+        dispatch(auth(true, {email : email, password : password}));
     }
 
     return(<div className="form">
@@ -24,10 +23,6 @@ const Register = (props) => {
 
           <h2 className="form-title">Register</h2>
 
-          <div className="input-group">
-                <label htmlFor="password">Name</label>
-                <input type="text" id="password" name="name" value={name} onChange={(e) => setName(e.target.value)} />
-            </div>
             <div className="input-group">
                 <label htmlFor="email">Email</label>
                 <input type="email" name="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
@@ -46,7 +41,7 @@ const Register = (props) => {
 
 
           <div>Already a User?<span onClick={() => props.viewHandler('login')} style={{color : 'blue', cursor : 'pointer'}}> Login</span></div>
-
+          
       </div>
     </form>
   </div>);

@@ -21,13 +21,20 @@ const rootReducer = combineReducers({
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddleware)));
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </Router>
+      <Router>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </Router>
   </Provider>,
   document.getElementById('root')
 );
 
 serviceWorker.unregister();
+
+
+// "functions": {
+//   "predeploy": [
+//     "npm --prefix \"$RESOURCE_DIR\" run lint"
+//   ]
+// },

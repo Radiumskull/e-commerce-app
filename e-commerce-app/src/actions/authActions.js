@@ -31,28 +31,27 @@ export const authLogout = () => {
 
 
 export const auth = (isSignUp, data) => {
-    const baseUrl = `http://127.0.0.1:5000/api/users/${isSignUp ? 'register' : 'signin'}`;
+    const baseUrl = `http://127.0.0.1:5000/api/users/${isSignUp ? 'signup' : 'login'}`;
     return dispatch => {
         dispatch(authStart());
         return isSignUp ? 
         axios.post(baseUrl, {
-            name : data.name,
-            email : data.email,
+            username : data.email,
             password : data.password
         }).then(res => {
             console.log(res.data);
             dispatch(authSuccess(res.data));
         }).catch(e => {
             console.log(e.response.data);
-            dispatch(authFailure(e.response.data.errors[0].msg));
+            dispatch(authFailure("Error Authenticating"));
         }) : axios.post(baseUrl, {
-            email : data.email,
+            username : data.email,
             password : data.password
         }).then(res => {
             dispatch(authSuccess(res.data))
         }).catch(e => {
             console.log(e.response);
-            dispatch(authFailure(e));
+            dispatch(authFailure("Error Authenticating"));
         });
 
 

@@ -12,6 +12,7 @@ const Login = (props) => {
     const [password, setPassword ] = useState("");
     const submitHandler = (event) => {
         event.preventDefault();
+        console.log(email, password);
         dispatch(auth(false, {email : email, password : password}));
     }
     return(<div className="form">
@@ -20,15 +21,14 @@ const Login = (props) => {
 
           <h2 className="form-title">Sign-In</h2>
             <div className="input-group">
-                <label htmlFor="email">Email</label>
-                <input type="email" name="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                
+              <label htmlFor="email">Email</label>
+              <input type="email" name="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
             </div>
 
 
             <div className="input-group">
-            <label htmlFor="password">Password</label>
-          <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <label htmlFor="password">Password</label>
+              <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
             </div>
 
 
